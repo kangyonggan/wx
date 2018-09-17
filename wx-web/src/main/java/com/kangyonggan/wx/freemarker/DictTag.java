@@ -1,7 +1,7 @@
-package cn.net.crazykart.freemarker;
+package com.kangyonggan.wx.freemarker;
 
-import cn.net.crazykart.model.Dict;
-import cn.net.crazykart.service.DictService;
+import com.kangyonggan.wx.model.Dict;
+import com.kangyonggan.wx.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

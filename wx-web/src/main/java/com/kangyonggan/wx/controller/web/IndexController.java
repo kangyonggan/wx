@@ -1,6 +1,6 @@
-package cn.net.crazykart.controller.web;
+package com.kangyonggan.wx.controller.web;
 
-import cn.net.crazykart.controller.BaseController;
+import com.kangyonggan.common.web.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

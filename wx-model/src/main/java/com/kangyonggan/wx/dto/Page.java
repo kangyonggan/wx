@@ -1,4 +1,4 @@
-package cn.net.crazykart.dto;
+package com.kangyonggan.wx.dto;
 
 import com.github.pagehelper.PageInfo;
 import lombok.Data;

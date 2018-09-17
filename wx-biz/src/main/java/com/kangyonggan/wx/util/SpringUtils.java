@@ -1,4 +1,4 @@
-package cn.net.crazykart.util;
+package com.kangyonggan.wx.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

@@ -1,7 +1,7 @@
-package cn.net.crazykart.service;
+package com.kangyonggan.wx.service;
 
-import cn.net.crazykart.model.Dict;
 import com.kangyonggan.common.Params;
+import com.kangyonggan.wx.model.Dict;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
-package cn.net.crazykart.freemarker;
+package com.kangyonggan.wx.freemarker;
 
-import cn.net.crazykart.model.User;
-import cn.net.crazykart.util.RedisSession;
 import freemarker.core.Environment;
 import freemarker.template.*;
 
@@ -42,15 +40,6 @@ public abstract class AbstractSuperTag implements TemplateDirectiveModel {
         }
 
         return null;
-    }
-
-    /**
-     * 获取当前登录的用户
-     *
-     * @return
-     */
-    protected User getUser() {
-        return RedisSession.currentUser();
     }
 
     protected void verifyParameters(Map params) throws TemplateModelException {

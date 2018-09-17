@@ -1,4 +1,4 @@
-package cn.net.crazykart.util;
+package com.kangyonggan.wx.util;
 
 import com.github.ofofs.jca.annotation.Util;
 import com.kangyonggan.common.web.ParamsInterceptor;

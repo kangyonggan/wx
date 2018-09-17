@@ -1,4 +1,4 @@
-package cn.net.crazykart.annotation;
+package com.kangyonggan.wx.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

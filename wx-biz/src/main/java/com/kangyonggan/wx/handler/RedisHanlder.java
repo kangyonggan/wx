@@ -1,9 +1,9 @@
-package cn.net.crazykart.handler;
+package com.kangyonggan.wx.handler;
 
-import cn.net.crazykart.service.RedisService;
-import cn.net.crazykart.util.SpringUtils;
 import com.github.ofofs.jca.annotation.Handler;
 import com.github.ofofs.jca.handler.CacheHandler;
+import com.kangyonggan.app.util.SpringUtils;
+import com.kangyonggan.wx.service.RedisService;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,4 +1,4 @@
-package cn.net.crazykart.exception;
+package com.kangyonggan.wx.exception;
 
 /**
  * 接收报文异常

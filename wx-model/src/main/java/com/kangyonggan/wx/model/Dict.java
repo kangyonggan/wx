@@ -1,10 +1,12 @@
-package cn.net.crazykart.model;
-
-import java.util.Date;
-import javax.persistence.*;
+package com.kangyonggan.wx.model;
 
 import com.github.ofofs.jca.annotation.Serial;
 import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * @author kangyonggan

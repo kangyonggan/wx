@@ -1,6 +1,6 @@
-package cn.net.crazykart.constants;
+package com.kangyonggan.wx.constants;
 
-import cn.net.crazykart.annotation.Enum;
+import com.kangyonggan.wx.annotation.Enum;
 import lombok.Getter;
 
 /**

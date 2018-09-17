@@ -1,6 +1,6 @@
-package cn.net.crazykart.freemarker;
+package com.kangyonggan.wx.freemarker;
 
-import cn.net.crazykart.constants.EnumHelper;
+import com.kangyonggan.wx.constants.EnumHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

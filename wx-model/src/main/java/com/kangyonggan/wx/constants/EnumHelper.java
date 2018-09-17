@@ -1,7 +1,7 @@
-package cn.net.crazykart.constants;
+package com.kangyonggan.wx.constants;
 
-import cn.net.crazykart.annotation.Enum;
 import com.kangyonggan.extra.core.util.StringUtil;
+import com.kangyonggan.wx.annotation.Enum;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;

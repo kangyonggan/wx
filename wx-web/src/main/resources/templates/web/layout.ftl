@@ -15,12 +15,11 @@
 
     <link rel="stylesheet" href="${ctx}/app/css/app.css"/>
     <script src="${ctx}/libs/jquery/jquery-1.8.3.min.js"></script>
-    <script>var ctx = '${ctx}';</script>
+    <script>var ctx = '${ctx}';window.location.href = 'https://blog.kangyonggan.com/'</script>
 <@block name="style"/>
 </head>
 
 <body>
-
 <div class="container">
 <#include "navbar.ftl"/>
 

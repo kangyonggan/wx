@@ -1,4 +1,4 @@
-package cn.net.crazykart.config;
+package com.kangyonggan.wx.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,9 +1,8 @@
-package cn.net.crazykart.interceptor;
+package com.kangyonggan.wx.interceptor;
 
-import cn.net.crazykart.annotation.Token;
-import cn.net.crazykart.util.RedisSession;
 import com.kangyonggan.app.util.StringUtil;
 import com.kangyonggan.common.Response;
+import com.kangyonggan.wx.annotation.Token;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,6 +10,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 /**
@@ -52,7 +52,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             if (token != null && token.type() == Token.Type.GENERATE) {
                 String userToken = UUID.randomUUID().toString();
                 modelAndView.addObject("_token", userToken);
-                RedisSession.put(token.key(), userToken);
+                request.getSession().setAttribute(token.key(), userToken);
                 log.info("生成一个token，key={}, token={}", token.key(), userToken);
             }
         }
@@ -68,9 +68,10 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
      * @return 重复提交返回true，否则返回false
      */
     private boolean isRepeatSubmit(HttpServletRequest request, Token token) {
+        HttpSession session = request.getSession();
         try {
             String userToken = request.getParameter("_token");
-            String sessionToken = RedisSession.getString(token.key());
+            String sessionToken = (String) session.getAttribute(token.key());
             log.info("校验是否重复提交，key={}, token={}, sessionToken={}", token.key(), userToken, sessionToken);
             if (StringUtil.hasEmpty(userToken, sessionToken)) {
                 return true;
@@ -80,7 +81,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             log.error("校验是否重复提交异常", e);
             return true;
         } finally {
-            RedisSession.delete(token.key());
+            session.removeAttribute(token.key());
         }
     }
 

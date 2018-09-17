@@ -1,8 +1,7 @@
-package cn.net.crazykart.config;
+package com.kangyonggan.wx.config;
 
-import cn.net.crazykart.interceptor.AuthInterceptor;
-import cn.net.crazykart.interceptor.TokenInterceptor;
 import com.kangyonggan.common.web.ParamsInterceptor;
+import com.kangyonggan.wx.interceptor.TokenInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -28,8 +27,6 @@ public class MvcConfigure implements WebMvcConfigurer {
         registry.addInterceptor(new ParamsInterceptor()).addPathPatterns("/**");
         // 防重复提交
         registry.addInterceptor(new TokenInterceptor()).addPathPatterns("/**");
-        // 登录认证
-        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/**");
     }
 
     /**

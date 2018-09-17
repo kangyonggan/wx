@@ -1,10 +1,12 @@
-package cn.net.crazykart.config;
+package com.kangyonggan.wx.config;
 
-import cn.net.crazykart.freemarker.*;
 import com.kangyonggan.freemarker.BlockDirective;
 import com.kangyonggan.freemarker.ExtendsDirective;
 import com.kangyonggan.freemarker.OverrideDirective;
 import com.kangyonggan.freemarker.SuperDirective;
+import com.kangyonggan.wx.freemarker.DictTag;
+import com.kangyonggan.wx.freemarker.EnumTag;
+import com.kangyonggan.wx.freemarker.FuncTag;
 import freemarker.template.TemplateModelException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,19 +25,10 @@ public class FreemarkerConfigure {
     freemarker.template.Configuration configuration;
 
     @Autowired
-    private MenusDirective menusDirective;
-
-    @Autowired
-    private UserDirective userDirective;
-
-    @Autowired
     private DictTag dictTag;
 
     @Autowired
     private EnumTag enumTag;
-
-    @Autowired
-    private BbsTag bbsTag;
 
     @Value("${app.name}")
     private String appName;
@@ -47,13 +40,9 @@ public class FreemarkerConfigure {
         configuration.setSharedVariable("extends", new ExtendsDirective());
         configuration.setSharedVariable("super", new SuperDirective());
 
-        configuration.setSharedVariable("app", new AppTags());
         configuration.setSharedVariable("func", new FuncTag());
         configuration.setSharedVariable("enum", enumTag);
         configuration.setSharedVariable("dict", dictTag);
-        configuration.setSharedVariable("bbs", bbsTag);
-        configuration.setSharedVariable("menus", menusDirective);
-        configuration.setSharedVariable("user", userDirective);
         configuration.setSharedVariable("appName", appName);
     }
 

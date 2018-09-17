@@ -1,4 +1,4 @@
-package cn.net.crazykart.freemarker;
+package com.kangyonggan.wx.freemarker;
 
 import freemarker.template.TemplateMethodModelEx;
 import freemarker.template.TemplateModelException;

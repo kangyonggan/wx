@@ -1,4 +1,4 @@
-package cn.net.crazykart.constants;
+package com.kangyonggan.wx.constants;
 
 /**
  * @author kangyonggan

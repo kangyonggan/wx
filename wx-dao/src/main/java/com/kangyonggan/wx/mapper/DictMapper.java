@@ -1,7 +1,7 @@
-package cn.net.crazykart.mapper;
+package com.kangyonggan.wx.mapper;
 
-import cn.net.crazykart.model.Dict;
 import com.kangyonggan.common.mybatis.MyMapper;
+import com.kangyonggan.wx.model.Dict;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

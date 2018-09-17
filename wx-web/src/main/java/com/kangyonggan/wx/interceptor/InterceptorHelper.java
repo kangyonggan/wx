@@ -1,13 +1,10 @@
-package cn.net.crazykart.interceptor;
+package com.kangyonggan.wx.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.ofofs.jca.annotation.Util;
 import com.kangyonggan.common.Response;
-import com.kangyonggan.common.web.ParamsInterceptor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.StringUtils;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
@@ -50,43 +47,5 @@ public class InterceptorHelper {
                 writer.close();
             }
         }
-    }
-
-    /**
-     * 获取cookie中的jsession中的id
-     *
-     * @return
-     */
-    public static String getJSessionId() {
-        return getJSessionId(ParamsInterceptor.getRequest());
-    }
-
-    /**
-     * 获取cookie中的jsession中的id
-     *
-     * @param request
-     * @return
-     */
-    public static String getJSessionId(HttpServletRequest request) {
-        String jsessionid = "";
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if ("JSESSIONID".equals(cookie.getName())) {
-                    jsessionid = cookie.getValue();
-                }
-            }
-        }
-
-        // 如果cookie中没有，尝试从header中获取
-        if (StringUtils.isEmpty(jsessionid)) {
-            jsessionid = request.getHeader("JSESSIONID");
-        }
-
-        if (jsessionid == null) {
-            jsessionid = "";
-        }
-
-        return jsessionid;
     }
 }

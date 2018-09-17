@@ -1,4 +1,4 @@
-package cn.net.crazykart.util;
+package com.kangyonggan.wx.util;
 
 import com.github.ofofs.jca.annotation.Util;
 import org.apache.commons.lang3.StringUtils;

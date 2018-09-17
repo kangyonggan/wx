@@ -1,8 +1,5 @@
-package cn.net.crazykart.service.impl;
+package com.kangyonggan.wx.service.impl;
 
-import cn.net.crazykart.constants.YesNo;
-import cn.net.crazykart.model.Dict;
-import cn.net.crazykart.service.DictService;
 import com.github.ofofs.jca.annotation.Cache;
 import com.github.ofofs.jca.annotation.CacheDel;
 import com.github.ofofs.jca.annotation.Log;
@@ -11,6 +8,9 @@ import com.kangyonggan.app.util.StringUtil;
 import com.kangyonggan.common.BaseService;
 import com.kangyonggan.common.Params;
 import com.kangyonggan.common.Query;
+import com.kangyonggan.wx.constants.YesNo;
+import com.kangyonggan.wx.model.Dict;
+import com.kangyonggan.wx.service.DictService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;

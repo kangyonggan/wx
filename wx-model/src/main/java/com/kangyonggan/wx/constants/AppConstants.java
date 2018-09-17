@@ -1,4 +1,4 @@
-package cn.net.crazykart.constants;
+package com.kangyonggan.wx.constants;
 
 /**
  * @author kangyonggan
@@ -15,10 +15,5 @@ public interface AppConstants {
      * Salt Size
      */
     int SALT_SIZE = 8;
-
-    /**
-     * 把验证码存放在session中的key
-     */
-    String KEY_CAPTCHA = "key-captcha";
 
 }

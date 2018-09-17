@@ -1,8 +1,8 @@
-package cn.net.crazykart.util;
+package com.kangyonggan.wx.util;
 
-import cn.net.crazykart.annotation.Valid;
-import cn.net.crazykart.exception.ValidException;
 import com.github.ofofs.jca.annotation.Util;
+import com.kangyonggan.wx.annotation.Valid;
+import com.kangyonggan.wx.exception.ValidException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;

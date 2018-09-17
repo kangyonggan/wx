@@ -1,4 +1,4 @@
-package cn.net.crazykart.freemarker;
+package com.kangyonggan.wx.freemarker;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

@@ -1,4 +1,4 @@
-package cn.net.crazykart.handler;
+package com.kangyonggan.wx.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.github.ofofs.jca.annotation.Handler;
