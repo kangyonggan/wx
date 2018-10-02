@@ -1,7 +1,5 @@
 package com.kangyonggan.wx.service.impl;
 
-import com.github.ofofs.jca.annotation.Cache;
-import com.github.ofofs.jca.annotation.CacheDel;
 import com.github.ofofs.jca.annotation.Log;
 import com.github.pagehelper.PageHelper;
 import com.kangyonggan.app.util.StringUtil;
@@ -26,7 +24,6 @@ public class DictServiceImpl extends BaseService<Dict> implements DictService {
 
     @Override
     @Log
-    @Cache("dict:type:${dictType}")
     public List<Dict> findDictsByDictType(String dictType) {
         Example example = new Example(Dict.class);
         example.createCriteria().andEqualTo("isDeleted", YesNo.NO.getCode()).andEqualTo("dictType", dictType);
@@ -74,21 +71,18 @@ public class DictServiceImpl extends BaseService<Dict> implements DictService {
 
     @Override
     @Log
-    @CacheDel("dict:*")
     public void updateDict(Dict dict) {
         myMapper.updateByPrimaryKeySelective(dict);
     }
 
     @Override
     @Log
-    @CacheDel("dict:*")
     public void saveDict(Dict dict) {
         myMapper.insertSelective(dict);
     }
 
     @Override
     @Log
-    @CacheDel("dict:*")
     public void deleteDict(Long dictId) {
         myMapper.deleteByPrimaryKey(dictId);
     }
