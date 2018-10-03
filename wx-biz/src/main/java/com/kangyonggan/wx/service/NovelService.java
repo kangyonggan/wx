@@ -42,8 +42,6 @@ public interface NovelService {
 
     /**
      * 拉取小说
-     *
-     * @param code
      */
-    void pullNovel(Integer code);
+    void pullNovels();
 }

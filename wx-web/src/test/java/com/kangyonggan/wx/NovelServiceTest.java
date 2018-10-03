@@ -15,7 +15,7 @@ public class NovelServiceTest extends AbstractTest {
 
     @Test
     public void testPullNovel() {
-        novelService.pullNovel(2722);
+        novelService.pullNovels();
     }
 
 }

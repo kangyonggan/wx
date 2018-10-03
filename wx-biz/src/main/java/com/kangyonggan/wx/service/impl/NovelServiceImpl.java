@@ -61,15 +61,7 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
     }
 
     @Override
-    public void pullNovel(Integer code) {
-        Novel novel = new Novel();
-        novel.setCode(code);
-
-        if (exists(novel)) {
-            log.info("小说已存在");
-            return;
-        }
-
+    public void pullNovels() {
         if (isPull) {
             log.info("小说更新中，请稍后再试！");
             return;
@@ -77,18 +69,30 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
 
         isPull = true;
 
-        if (code == null) {
-            code = 1;
+        List<Dict> categories = dictService.findDictsByDictType("NOVEL");
+        List<String> categoryCodes = Collections3.extractToList(categories, "dictCode");
+        int errCnt = 0;
+        int code = 1;
+        while (true) {
+            try {
+                Novel novel = new Novel();
+                novel.setCode(code);
+                if (super.exists(novel)) {
+                    code++;
+                    continue;
+                }
+
+                Document document = HtmlUtil.parseUrl(BI_QU_GE_URL + "book/" + code);
+                parseNovel(document, code++, categoryCodes);
+            } catch (Exception e) {
+                log.error("小说解析异常, 继续解析下一本", e);
+                if (errCnt++ > 5) {
+                    log.info("连续解析5次，退出");
+                    break;
+                }
+            }
         }
-        try {
-            List<Dict> categoryCodes = dictService.findDictsByDictType("NOVEL");
-            Document document = HtmlUtil.parseUrl(BI_QU_GE_URL + "book/" + code);
-            parseNovel(document, code, Collections3.extractToList(categoryCodes, "dictCode"));
-        } catch (Exception e) {
-            log.error("小说解析异常, 继续解析下一本", e);
-        } finally {
-            isPull = false;
-        }
+        isPull = false;
     }
 
     /**
