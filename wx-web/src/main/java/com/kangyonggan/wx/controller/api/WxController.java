@@ -92,7 +92,7 @@ public class WxController extends BaseController {
      * @return
      */
     @GetMapping("record/{id:[\\d]+}")
-    public Response records(@RequestParam("id") Long id) {
+    public Response records(@PathVariable("id") Long id) {
         Response response = Response.getSuccessResponse();
         Record record = recordService.findRecordById(id);
 
