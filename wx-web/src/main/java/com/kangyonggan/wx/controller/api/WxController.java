@@ -85,4 +85,19 @@ public class WxController extends BaseController {
         return response;
     }
 
+    /**
+     * 记录详情
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("record/{id:[\\d]+}")
+    public Response records(@RequestParam("id") Long id) {
+        Response response = Response.getSuccessResponse();
+        Record record = recordService.findRecordById(id);
+
+        response.put("record", record);
+        return response;
+    }
+
 }

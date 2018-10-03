@@ -44,4 +44,10 @@ public class RecordServiceImpl extends BaseService<Record> implements RecordServ
         PageHelper.startPage(pageNum, AppConstants.SALT_SIZE);
         return myMapper.selectByExample(example);
     }
+
+    @Override
+    @Log
+    public Record findRecordById(Long id) {
+        return myMapper.selectByPrimaryKey(id);
+    }
 }

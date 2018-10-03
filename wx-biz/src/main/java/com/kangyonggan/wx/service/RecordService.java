@@ -24,4 +24,13 @@ public interface RecordService {
      * @return
      */
     List<Record> findRecords(String openid, int pageNum);
+
+    /**
+     * 查找记录详情
+     *
+     * @param id
+     * @return
+     */
+    Record findRecordById(Long id);
+
 }
