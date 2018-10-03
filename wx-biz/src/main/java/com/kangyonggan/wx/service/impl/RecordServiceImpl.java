@@ -26,6 +26,9 @@ public class RecordServiceImpl extends BaseService<Record> implements RecordServ
         if (StringUtils.isEmpty(record.getContent()) && StringUtils.isEmpty(record.getFileNames())) {
             throw new ValidException();
         }
+        if (StringUtils.isEmpty(record.getContent())) {
+            record.setContent("");
+        }
         myMapper.insertSelective(record);
     }
 

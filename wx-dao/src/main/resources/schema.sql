@@ -124,9 +124,9 @@ CREATE TABLE tb_record
 (
   id           BIGINT(20) PRIMARY KEY AUTO_INCREMENT NOT NULL
   COMMENT '主键, 自增',
-  content      VARCHAR(2048)                         NOT NULL                    DEFAULT ''
+  content      LONGTEXT                              NOT NULL
   COMMENT '内容',
-  file_names    VARCHAR(2048)                         NOT NULL                    DEFAULT ''
+  file_names   VARCHAR(2048)                         NOT NULL                    DEFAULT ''
   COMMENT '作者',
   openid       VARCHAR(128)                          NOT NULL
   COMMENT 'openid',
