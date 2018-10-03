@@ -32,7 +32,7 @@ public class FileUploadController {
     private String fileUploadPath;
 
     /**
-     * 编辑器文件、图片上传
+     * 图片上传
      *
      * @param file    文件
      * @param request 请求

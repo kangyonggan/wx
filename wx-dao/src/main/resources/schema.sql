@@ -113,3 +113,30 @@ VALUES
   ('NOVEL', 'wangyou', '网游', 5),
   ('NOVEL', 'kehuan', '科幻', 6),
   ('NOVEL', 'qita', '其他', 7);
+
+-- ----------------------------
+--  Table structure for tb_record
+-- ----------------------------
+DROP TABLE
+IF EXISTS tb_record;
+
+CREATE TABLE tb_record
+(
+  id           BIGINT(20) PRIMARY KEY AUTO_INCREMENT NOT NULL
+  COMMENT '主键, 自增',
+  content      VARCHAR(2048)                         NOT NULL                    DEFAULT ''
+  COMMENT '内容',
+  file_names    VARCHAR(2048)                         NOT NULL                    DEFAULT ''
+  COMMENT '作者',
+  openid       VARCHAR(128)                          NOT NULL
+  COMMENT 'openid',
+  status       TINYINT                               NOT NULL                    DEFAULT 0
+  COMMENT '状态:{0:可用, 1:禁用}',
+  created_time TIMESTAMP                             NOT NULL                    DEFAULT CURRENT_TIMESTAMP
+  COMMENT '创建时间',
+  updated_time TIMESTAMP                             NOT NULL                    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  COMMENT '更新时间'
+)
+  COMMENT '书籍表';
+CREATE INDEX ix_openid
+  ON tb_record (openid);
