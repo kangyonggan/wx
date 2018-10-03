@@ -76,7 +76,8 @@ public class WxController extends BaseController {
      * @return
      */
     @GetMapping("records")
-    public Response records(String openid, int pageNum) {
+    public Response records(@RequestParam(value = "openid", required = false, defaultValue = "") String openid,
+                            @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum) {
         Response response = Response.getSuccessResponse();
         List<Record> records = recordService.findRecords(openid, pageNum);
 

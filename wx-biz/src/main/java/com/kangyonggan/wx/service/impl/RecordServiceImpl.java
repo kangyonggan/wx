@@ -36,7 +36,9 @@ public class RecordServiceImpl extends BaseService<Record> implements RecordServ
     @Log
     public List<Record> findRecords(String openid, int pageNum) {
         Example example = new Example(Record.class);
-        example.createCriteria().andEqualTo("openid", openid);
+        if (StringUtils.isNotEmpty(openid)) {
+            example.createCriteria().andEqualTo("openid", openid);
+        }
 
         example.setOrderByClause("id desc");
         PageHelper.startPage(pageNum, AppConstants.SALT_SIZE);
