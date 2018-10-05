@@ -44,4 +44,19 @@ public interface NovelService {
      * 拉取小说
      */
     void pullNovels();
+
+    /**
+     * 拉取指定小说
+     *
+     * @param novelCode
+     */
+    void pullNovel(int novelCode);
+
+    /**
+     * 查询小说
+     *
+     * @param pageNum
+     * @return
+     */
+    List<Novel> findNovels(int pageNum);
 }

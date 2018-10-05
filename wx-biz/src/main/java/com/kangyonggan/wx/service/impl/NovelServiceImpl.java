@@ -6,6 +6,7 @@ import com.kangyonggan.app.util.HtmlUtil;
 import com.kangyonggan.common.BaseService;
 import com.kangyonggan.common.Params;
 import com.kangyonggan.extra.core.annotation.Log;
+import com.kangyonggan.wx.constants.YesNo;
 import com.kangyonggan.wx.mapper.NovelMapper;
 import com.kangyonggan.wx.model.Dict;
 import com.kangyonggan.wx.model.Novel;
@@ -17,6 +18,7 @@ import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -95,6 +97,45 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
         isPull = false;
     }
 
+    @Override
+    @Log
+    public void pullNovel(int novelCode) {
+        if (isPull) {
+            log.info("小说更新中，请稍后再试！");
+            return;
+        }
+
+        isPull = true;
+
+        List<Dict> categories = dictService.findDictsByDictType("NOVEL");
+        List<String> categoryCodes = Collections3.extractToList(categories, "dictCode");
+        try {
+            Novel novel = new Novel();
+            novel.setCode(novelCode);
+            if (super.exists(novel)) {
+                log.error("小说{}已存在，无须抓取", novelCode);
+                return;
+            }
+
+            Document document = HtmlUtil.parseUrl(BI_QU_GE_URL + "book/" + novelCode);
+            parseNovel(document, novelCode, categoryCodes);
+        } catch (Exception e) {
+            log.error("抓取小说{}异常", novelCode, e);
+        }
+        isPull = false;
+    }
+
+    @Override
+    @Log
+    public List<Novel> findNovels(int pageNum) {
+        Example example = new Example(Novel.class);
+        example.createCriteria().andEqualTo("status", YesNo.NO.getCode());
+
+        example.setOrderByClause("id desc");
+        PageHelper.startPage(pageNum, 10);
+        return myMapper.selectByExample(example);
+    }
+
     /**
      * 解析小说
      *
@@ -125,6 +166,7 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
         String filePath = "cover/" + code + picUrl.substring(picUrl.lastIndexOf("."));
         try {
             FileUtil.downloadFromUrl(picUrl, fileUploadPath + filePath);
+            filePath = "upload/" + filePath;
         } catch (Exception e) {
             filePath = "app/images/nocover.jpg";
         }

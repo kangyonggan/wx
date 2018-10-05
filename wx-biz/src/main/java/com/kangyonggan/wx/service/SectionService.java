@@ -56,4 +56,22 @@ public interface SectionService {
      * @param novelCodes
      */
     void updateNovelSections(List<Integer> novelCodes);
+
+    /**
+     * 章节列表
+     *
+     * @param novelCode
+     * @param pageNum
+     * @return
+     */
+    List<Section> findSections(int novelCode, int pageNum);
+
+    /**
+     * 章节详情
+     *
+     * @param sectionCode
+     * @return
+     */
+    Section findSection(int sectionCode);
+
 }

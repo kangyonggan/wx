@@ -76,6 +76,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
         example.createCriteria().andEqualTo("novelCode", section.getNovelCode()).andLessThan("code", code);
 
+        example.selectProperties("code", "title");
+
         example.setOrderByClause("code desc");
 
         PageHelper.startPage(1, 1);
@@ -97,6 +99,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         Example example = new Example(Section.class);
         example.createCriteria().andEqualTo("novelCode", section.getNovelCode()).andGreaterThan("code", code);
 
+        example.selectProperties("code", "title");
+
         example.setOrderByClause("code asc");
 
         PageHelper.startPage(1, 1);
@@ -117,6 +121,23 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
                 log.warn("更新小说{}章节异常", novelCode, e);
             }
         }
+    }
+
+    @Override
+    public List<Section> findSections(int novelCode, int pageNum) {
+        Example example = new Example(Section.class);
+        example.createCriteria().andEqualTo("novelCode", novelCode);
+        example.setOrderByClause("code asc");
+
+        PageHelper.startPage(pageNum, 100);
+        return myMapper.selectByExample(example);
+    }
+
+    @Override
+    public Section findSection(int sectionCode) {
+        Section section = new Section();
+        section.setCode(sectionCode);
+        return myMapper.selectOne(section);
     }
 
     @Override
@@ -186,6 +207,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         } catch (Exception e) {
             log.warn("抓取章节异常", e);
         }
+        log.info("小说更新完毕:{}", novelCode);
     }
 
     /**
