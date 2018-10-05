@@ -127,6 +127,9 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     public List<Section> findSections(int novelCode, int pageNum) {
         Example example = new Example(Section.class);
         example.createCriteria().andEqualTo("novelCode", novelCode);
+
+        example.selectProperties("code", "novelCode", "title");
+
         example.setOrderByClause("code asc");
 
         PageHelper.startPage(pageNum, 100);
