@@ -113,6 +113,7 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
             Novel novel = new Novel();
             novel.setCode(novelCode);
             if (super.exists(novel)) {
+                isPull = false;
                 log.error("小说{}已存在，无须抓取", novelCode);
                 return;
             }
@@ -147,14 +148,19 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
     public void parseNovel(Document document, int code, List<String> categoryCodes) throws Exception {
         String name = document.select("#maininfo #info h1").html().trim();
         String author = document.select("#maininfo #info p").get(0).html().trim();
-        String categoryCode = document.select(".box_con .con_top a").get(1).attr("href").replaceAll("/", "");
+        String categoryCode;
+        try {
+            categoryCode = document.select(".box_con .con_top a").get(1).attr("href").replaceAll("/", "");
+        } catch (Exception e) {
+            categoryCode = "qita";
+        }
         if (!categoryCodes.contains(categoryCode)) {
             categoryCode = "qita";
         }
 
         String picUrl = document.select("#fmimg img").attr("src");
         author = author.substring(author.indexOf("：") + 1);
-        String descp = document.select("#intro p").get(0).html().trim();
+        String descp = document.select("#intro").html().trim();
 
         Novel novel = new Novel();
         novel.setCode(code);

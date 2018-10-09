@@ -27,15 +27,18 @@ public class NovelServiceTest extends AbstractTest {
     @Test
     public void testPullNovel() {
         // 逆天邪神
-        novelService.pullNovel(2722);
+//        novelService.pullNovel(2722);
         // 圣墟
-        novelService.pullNovel(12564);
+//        novelService.pullNovel(12564);
+        // 充个会员当武神
+        novelService.pullNovel(81968);
     }
 
     @Test
     public void testPullSections() throws IOException {
-        sectionService.updateSections(2722);
-        sectionService.updateSections(12564);
+//        sectionService.updateSections(2722);
+//        sectionService.updateSections(12564);
+        sectionService.updateSections(81968);
         System.in.read();
     }
 
