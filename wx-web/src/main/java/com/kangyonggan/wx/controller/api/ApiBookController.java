@@ -49,7 +49,7 @@ public class ApiBookController extends BaseController {
      * @return
      */
     @GetMapping("sections")
-    public Response sections(@RequestParam("novelCode") int novelCode,
+    public Response sections(@RequestParam("novelCode") String novelCode,
                              @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum) {
         Response response = Response.getSuccessResponse();
         List<Section> sections = sectionService.findSections(novelCode, pageNum);
@@ -65,8 +65,8 @@ public class ApiBookController extends BaseController {
      * @param sectionCode
      * @return
      */
-    @GetMapping("{novelCode:[\\d]+}/section/{sectionCode:[\\d]+}")
-    public Response section(@PathVariable("novelCode") int novelCode, @PathVariable("sectionCode") int sectionCode) {
+    @GetMapping("{novelCode:[\\w]+}/section/{sectionCode:[\\w]+}")
+    public Response section(@PathVariable("novelCode") String novelCode, @PathVariable("sectionCode") String sectionCode) {
         Response response = Response.getSuccessResponse();
         Section section = sectionService.findSection(novelCode, sectionCode);
         Section nextSection = sectionService.findNextSectionByCode(novelCode, sectionCode);
@@ -85,8 +85,8 @@ public class ApiBookController extends BaseController {
      * @param sectionCode
      * @return
      */
-    @GetMapping("{novelCode:[\\d]+}/refresh/{sectionCode:[\\d]+}")
-    public Response refresh(@PathVariable("novelCode") int novelCode, @PathVariable("sectionCode") int sectionCode) {
+    @GetMapping("{novelCode:[\\w]+}/refresh/{sectionCode:[\\w]+}")
+    public Response refresh(@PathVariable("novelCode") String novelCode, @PathVariable("sectionCode") String sectionCode) {
         Section section = sectionService.findSectionByCode(novelCode, sectionCode);
         sectionService.updateSections(section.getNovelCode());
         return Response.getSuccessResponse();

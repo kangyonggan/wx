@@ -55,7 +55,7 @@ CREATE TABLE tb_novel
   COMMENT '栏目代码',
   pic_url       VARCHAR(256)                          NOT NULL                    DEFAULT ''
   COMMENT '封面图片地址',
-  code          INT(11)                               NOT NULL
+  code          VARCHAR(11)                           NOT NULL
   COMMENT '书籍代码',
   descp         VARCHAR(2048)                         NOT NULL
   COMMENT '描述',
@@ -82,13 +82,13 @@ CREATE TABLE tb_section
 (
   id           BIGINT(20) PRIMARY KEY AUTO_INCREMENT NOT NULL
   COMMENT '主键, 自增',
-  code         INT(11)                               NOT NULL
+  code         VARCHAR(11)                           NOT NULL
   COMMENT '章节代码',
   title        VARCHAR(64)                           NOT NULL
   COMMENT '标题',
   content      LONGTEXT                              NOT NULL
   COMMENT '内容',
-  novel_code   INT(11)                               NOT NULL
+  novel_code   VARCHAR(11)                           NOT NULL
   COMMENT '小说代码',
   status       TINYINT                               NOT NULL                    DEFAULT 0
   COMMENT '状态:{0:可用, 1:禁用}',

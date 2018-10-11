@@ -38,7 +38,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     /**
      * 更新标识
      */
-    private static Map<Integer, Boolean> flagMap = new HashMap<>();
+    private static Map<String, Boolean> flagMap = new HashMap<>();
 
     @Override
     @Log
@@ -58,7 +58,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
     @Override
     @Log
-    public Section findSectionByCode(int novelCode, Integer sectionCode) {
+    public Section findSectionByCode(String novelCode, String sectionCode) {
         Section section = new Section();
         section.setNovelCode(novelCode);
         section.setCode(sectionCode);
@@ -68,7 +68,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
     @Override
     @Log
-    public Section findPrevSectionByCode(int novelCode, Integer code) {
+    public Section findPrevSectionByCode(String novelCode, String code) {
         Section section = findSectionByCode(novelCode, code);
         if (section == null) {
             return null;
@@ -92,7 +92,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
     @Override
     @Log
-    public Section findNextSectionByCode(int novelCode, Integer code) {
+    public Section findNextSectionByCode(String novelCode, String code) {
         Section section = findSectionByCode(novelCode, code);
         if (section == null) {
             return null;
@@ -114,8 +114,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     }
 
     @Override
-    public void updateNovelSections(List<Integer> novelCodes) {
-        for (Integer novelCode : novelCodes) {
+    public void updateNovelSections(List<String> novelCodes) {
+        for (String novelCode : novelCodes) {
             try {
                 pullSections(novelCode);
             } catch (Exception e) {
@@ -125,7 +125,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     }
 
     @Override
-    public List<Section> findSections(int novelCode, int pageNum) {
+    public List<Section> findSections(String novelCode, int pageNum) {
         Example example = new Example(Section.class);
         example.createCriteria().andEqualTo("novelCode", novelCode);
 
@@ -138,7 +138,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     }
 
     @Override
-    public Section findSection(int novelCode, int sectionCode) {
+    public Section findSection(String novelCode, String sectionCode) {
         Section section = new Section();
         section.setNovelCode(novelCode);
         section.setCode(sectionCode);
@@ -148,7 +148,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     @Override
     @Log
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
-    public void updateSections(Integer novelCode) {
+    public void updateSections(String novelCode) {
         Boolean flag = flagMap.get(novelCode);
         if (flag != null && flag) {
             log.info("小说{}正在更新, 不可再次更新", novelCode);
@@ -175,7 +175,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
      *
      * @param novelCode
      */
-    private void pullSections(Integer novelCode) {
+    private void pullSections(String novelCode) {
         Novel novel = novelService.findNovelByCode(novelCode);
 
         if (novel == null) {
@@ -187,9 +187,9 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
             // 最新章节
             Section lastSection = findLastSectionByNovelCode(novelCode);
             String url = NovelService.BI_QU_GE_URL + "book/" + novelCode;
-            if (novelCode == 106513) {
+            if ("106513".equals(novelCode)) {
                 url =  "http://www.800txt.net/book_" + novelCode;
-            } else if (novelCode == 2722) {
+            } else if ("2722".equals(novelCode)) {
                 url =  "http://www.biquge.cn/book/" + novelCode;
             }
 
@@ -202,7 +202,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
                     Element element = elements.get(i);
                     String scode = element.attr("href");
                     scode = scode.substring(scode.lastIndexOf("/") + 1, scode.lastIndexOf("."));
-                    if (lastSection.getCode() == Integer.parseInt(scode)) {
+                    if (lastSection.getCode().equals(scode)) {
                         startNum = i + 1;
                         break;
                     }
@@ -214,7 +214,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
                 Element element = elements.get(i);
                 String scode = element.attr("href");
                 scode = scode.substring(scode.lastIndexOf("/") + 1, scode.lastIndexOf("."));
-                parseSection(novelCode, Integer.parseInt(scode));
+                parseSection(novelCode, scode);
             }
         } catch (Exception e) {
             log.warn("抓取章节异常", e);
@@ -229,7 +229,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
      * @return
      */
     @Log
-    private Section findLastSectionByNovelCode(Integer code) {
+    private Section findLastSectionByNovelCode(String code) {
         Example example = new Example(Section.class);
         example.createCriteria().andEqualTo("novelCode", code);
         example.setOrderByClause("code desc");
@@ -250,11 +250,11 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
      * @param novelCode
      * @param sectionCode
      */
-    private void parseSection(int novelCode, int sectionCode) {
+    private void parseSection(String novelCode, String sectionCode) {
         String url = NovelService.BI_QU_GE_URL + "/book/" + novelCode + "/" + sectionCode + ".html";
-        if (novelCode == 106513) {
+        if ("106513".endsWith(novelCode)) {
             url =  "http://www.800txt.net/book_" + novelCode + "/" + sectionCode + ".html";
-        } else if (novelCode == 2722) {
+        } else if ("2722".equals(novelCode)) {
             url =  "http://www.biquge.cn/book/" + novelCode + "/" + sectionCode + ".html";
         }
         Document doc = HtmlUtil.parseUrl(url);

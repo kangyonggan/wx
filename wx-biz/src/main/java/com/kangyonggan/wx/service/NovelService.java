@@ -38,7 +38,7 @@ public interface NovelService {
      * @param code
      * @return
      */
-    Novel findNovelByCode(Integer code);
+    Novel findNovelByCode(String code);
 
     /**
      * 拉取小说
@@ -50,7 +50,7 @@ public interface NovelService {
      *
      * @param novelCode
      */
-    void pullNovel(int novelCode);
+    void pullNovel(String novelCode);
 
     /**
      * 查询小说

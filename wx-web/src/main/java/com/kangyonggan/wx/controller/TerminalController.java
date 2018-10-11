@@ -30,7 +30,7 @@ public class TerminalController {
      * @return
      */
     @GetMapping("pullNovel")
-    public Response pullNovel(@RequestParam("novelCode") int novelCode) {
+    public Response pullNovel(@RequestParam("novelCode") String novelCode) {
         novelService.pullNovel(novelCode);
         return Response.getSuccessResponse();
     }
@@ -42,7 +42,7 @@ public class TerminalController {
      * @return
      */
     @GetMapping("pullSection")
-    public Response pullSection(@RequestParam("novelCode") int novelCode) {
+    public Response pullSection(@RequestParam("novelCode") String novelCode) {
         sectionService.updateSections(novelCode);
         return Response.getSuccessResponse();
     }

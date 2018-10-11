@@ -23,7 +23,7 @@ public class Section implements Serializable {
     /**
      * 章节代码
      */
-    private Integer code;
+    private String code;
 
     /**
      * 标题
@@ -34,7 +34,7 @@ public class Section implements Serializable {
      * 小说代码
      */
     @Column(name = "novel_code")
-    private Integer novelCode;
+    private String novelCode;
 
     /**
      * 状态:{0:可用, 1:禁用}

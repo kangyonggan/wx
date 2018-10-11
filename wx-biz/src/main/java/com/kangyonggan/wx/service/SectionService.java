@@ -25,14 +25,14 @@ public interface SectionService {
      * @param sectionCode
      * @return
      */
-    Section findSectionByCode(int novelCode, Integer sectionCode);
+    Section findSectionByCode(String novelCode, String sectionCode);
 
     /**
      * 拉取最新章节
      *
      * @param novelCode
      */
-    void updateSections(Integer novelCode);
+    void updateSections(String novelCode);
 
     /**
      * 查找上一章
@@ -41,7 +41,7 @@ public interface SectionService {
      * @param code
      * @return
      */
-    Section findPrevSectionByCode(int novelCode, Integer code);
+    Section findPrevSectionByCode(String novelCode, String code);
 
     /**
      * 查找下一章
@@ -50,14 +50,14 @@ public interface SectionService {
      * @param code
      * @return
      */
-    Section findNextSectionByCode(int novelCode, Integer code);
+    Section findNextSectionByCode(String novelCode, String code);
 
     /**
      * 更新书籍章节
      *
      * @param novelCodes
      */
-    void updateNovelSections(List<Integer> novelCodes);
+    void updateNovelSections(List<String> novelCodes);
 
     /**
      * 章节列表
@@ -66,7 +66,7 @@ public interface SectionService {
      * @param pageNum
      * @return
      */
-    List<Section> findSections(int novelCode, int pageNum);
+    List<Section> findSections(String novelCode, int pageNum);
 
     /**
      * 章节详情
@@ -75,6 +75,6 @@ public interface SectionService {
      * @param sectionCode
      * @return
      */
-    Section findSection(int novelCode, int sectionCode);
+    Section findSection(String novelCode, String sectionCode);
 
 }

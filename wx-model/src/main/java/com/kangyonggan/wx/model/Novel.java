@@ -45,7 +45,7 @@ public class Novel implements Serializable {
     /**
      * 书籍代码
      */
-    private Integer code;
+    private String code;
 
     /**
      * 描述

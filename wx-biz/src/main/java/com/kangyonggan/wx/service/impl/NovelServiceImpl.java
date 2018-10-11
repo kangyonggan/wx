@@ -56,7 +56,7 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
 
     @Override
     @Log
-    public Novel findNovelByCode(Integer code) {
+    public Novel findNovelByCode(String code) {
         Novel novel = new Novel();
         novel.setCode(code);
         return myMapper.selectOne(novel);
@@ -78,14 +78,14 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
         while (true) {
             try {
                 Novel novel = new Novel();
-                novel.setCode(code);
+                novel.setCode(String.valueOf(code));
                 if (super.exists(novel)) {
                     code++;
                     continue;
                 }
 
                 Document document = HtmlUtil.parseUrl(BI_QU_GE_URL + "book/" + code);
-                parseNovel(document, code++, categoryCodes);
+                parseNovel(document, String.valueOf(code++), categoryCodes);
             } catch (Exception e) {
                 log.error("小说解析异常, 继续解析下一本", e);
                 if (errCnt++ > 5) {
@@ -99,7 +99,7 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
 
     @Override
     @Log
-    public void pullNovel(int novelCode) {
+    public void pullNovel(String novelCode) {
         if (isPull) {
             log.info("小说更新中，请稍后再试！");
             return;
@@ -145,7 +145,7 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
      * @param categoryCodes
      * @throws Exception
      */
-    public void parseNovel(Document document, int code, List<String> categoryCodes) throws Exception {
+    public void parseNovel(Document document, String code, List<String> categoryCodes) throws Exception {
         String name = document.select("#maininfo #info h1").html().trim();
         String author = document.select("#maininfo #info p").get(0).html().trim();
         String categoryCode;

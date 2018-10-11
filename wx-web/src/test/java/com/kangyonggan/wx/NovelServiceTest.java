@@ -31,7 +31,7 @@ public class NovelServiceTest extends AbstractTest {
         // 圣墟
 //        novelService.pullNovel(12564);
         // 充个会员当武神
-        novelService.pullNovel(81968);
+        novelService.pullNovel("81968");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class NovelServiceTest extends AbstractTest {
 //        sectionService.updateSections(2722);
 //        sectionService.updateSections(12564);
 //        sectionService.updateSections(81968);
-        sectionService.updateSections(106513);
+        sectionService.updateSections("106513");
         System.in.read();
     }
 
