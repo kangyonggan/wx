@@ -38,7 +38,8 @@ public class NovelServiceTest extends AbstractTest {
     public void testPullSections() throws IOException {
 //        sectionService.updateSections(2722);
 //        sectionService.updateSections(12564);
-        sectionService.updateSections(81968);
+//        sectionService.updateSections(81968);
+        sectionService.updateSections(106513);
         System.in.read();
     }
 

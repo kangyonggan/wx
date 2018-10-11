@@ -184,7 +184,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         try {
             // 最新章节
             Section lastSection = findLastSectionByNovelCode(novelCode);
-            Document bookDoc = HtmlUtil.parseUrl(NovelService.BI_QU_GE_URL + "book/" + novelCode);
+            Document bookDoc = HtmlUtil.parseUrl(NovelService.BI_QU_GE_URL + "book_" + novelCode);
             Elements elements = bookDoc.select("#list dl dd a");
 
             int startNum = 0;
@@ -242,7 +242,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
      * @param sectionCode
      */
     private void parseSection(int novelCode, int sectionCode) {
-        Document doc = HtmlUtil.parseUrl(NovelService.BI_QU_GE_URL + "/book/" + novelCode + "/" + sectionCode + ".html");
+        Document doc = HtmlUtil.parseUrl(NovelService.BI_QU_GE_URL + "/book_" + novelCode + "/" + sectionCode + ".html");
 
         String title = doc.select(".bookname h1").html().trim();
         String content = doc.select("#content").html();
