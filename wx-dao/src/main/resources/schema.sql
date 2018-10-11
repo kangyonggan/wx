@@ -98,8 +98,8 @@ CREATE TABLE tb_section
   COMMENT '更新时间'
 )
   COMMENT '章节表';
-CREATE UNIQUE INDEX code_UNIQUE
-  ON tb_section (code);
+CREATE UNIQUE INDEX novel_code_code_UNIQUE
+  ON tb_section (novel_code, code);
 CREATE INDEX ix_novel_code
   ON tb_section (novel_code);
 

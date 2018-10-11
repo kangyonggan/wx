@@ -85,7 +85,7 @@ public class ApiBookController extends BaseController {
      * @param sectionCode
      * @return
      */
-    @GetMapping("{novelCode:[\\d]+}refresh/{sectionCode:[\\d]+}")
+    @GetMapping("{novelCode:[\\d]+}/refresh/{sectionCode:[\\d]+}")
     public Response refresh(@PathVariable("novelCode") int novelCode, @PathVariable("sectionCode") int sectionCode) {
         Section section = sectionService.findSectionByCode(novelCode, sectionCode);
         sectionService.updateSections(section.getNovelCode());
