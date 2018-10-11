@@ -131,7 +131,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
         example.selectProperties("code", "novelCode", "title");
 
-        example.setOrderByClause("code asc");
+        example.setOrderByClause("id asc");
 
         PageHelper.startPage(pageNum, 100);
         return myMapper.selectByExample(example);
