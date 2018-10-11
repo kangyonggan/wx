@@ -79,7 +79,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
         example.selectProperties("code", "title");
 
-        example.setOrderByClause("code desc");
+        example.setOrderByClause("id desc");
 
         PageHelper.startPage(1, 1);
         List<Section> sections = myMapper.selectByExample(example);
@@ -102,7 +102,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
         example.selectProperties("code", "title");
 
-        example.setOrderByClause("code asc");
+        example.setOrderByClause("id asc");
 
         PageHelper.startPage(1, 1);
         List<Section> sections = myMapper.selectByExample(example);
