@@ -184,7 +184,12 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         try {
             // 最新章节
             Section lastSection = findLastSectionByNovelCode(novelCode);
-            Document bookDoc = HtmlUtil.parseUrl(NovelService.BI_QU_GE_URL + "book/" + novelCode);
+            String url = NovelService.BI_QU_GE_URL + "book/" + novelCode;
+            if (novelCode == 106513) {
+                url =  "http://www.800txt.net/book_" + novelCode;
+            }
+
+            Document bookDoc = HtmlUtil.parseUrl(url);
             Elements elements = bookDoc.select("#list dl dd a");
 
             int startNum = 0;
@@ -242,7 +247,11 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
      * @param sectionCode
      */
     private void parseSection(int novelCode, int sectionCode) {
-        Document doc = HtmlUtil.parseUrl(NovelService.BI_QU_GE_URL + "/book/" + novelCode + "/" + sectionCode + ".html");
+        String url = NovelService.BI_QU_GE_URL + "/book/" + novelCode + "/" + sectionCode + ".html";
+        if (novelCode == 106513) {
+            url =  "http://www.800txt.net/book_" + novelCode + "/" + sectionCode + ".html";
+        }
+        Document doc = HtmlUtil.parseUrl(url);
 
         String title = doc.select(".bookname h1").html().trim();
         String content = doc.select("#content").html();
