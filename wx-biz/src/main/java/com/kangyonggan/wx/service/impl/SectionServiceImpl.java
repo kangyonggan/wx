@@ -75,7 +75,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         }
         Example example = new Example(Section.class);
 
-        example.createCriteria().andEqualTo("novelCode", section.getNovelCode()).andLessThan("code", code);
+        example.createCriteria().andEqualTo("novelCode", section.getNovelCode()).andLessThan("id", section.getId());
 
         example.selectProperties("code", "title");
 
@@ -98,7 +98,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
             return null;
         }
         Example example = new Example(Section.class);
-        example.createCriteria().andEqualTo("novelCode", section.getNovelCode()).andGreaterThan("code", code);
+        example.createCriteria().andEqualTo("novelCode", section.getNovelCode()).andGreaterThan("id", section.getId());
 
         example.selectProperties("code", "title");
 
