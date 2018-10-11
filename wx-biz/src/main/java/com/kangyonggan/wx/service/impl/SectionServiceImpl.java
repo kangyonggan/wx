@@ -189,6 +189,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
             String url = NovelService.BI_QU_GE_URL + "book/" + novelCode;
             if (novelCode == 106513) {
                 url =  "http://www.800txt.net/book_" + novelCode;
+            } else if (novelCode == 2722) {
+                url =  "http://www.biquge.cn/book/" + novelCode;
             }
 
             Document bookDoc = HtmlUtil.parseUrl(url);
@@ -252,6 +254,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         String url = NovelService.BI_QU_GE_URL + "/book/" + novelCode + "/" + sectionCode + ".html";
         if (novelCode == 106513) {
             url =  "http://www.800txt.net/book_" + novelCode + "/" + sectionCode + ".html";
+        } else if (novelCode == 2722) {
+            url =  "http://www.biquge.cn/book/" + novelCode + "/" + sectionCode + ".html";
         }
         Document doc = HtmlUtil.parseUrl(url);
 
