@@ -232,7 +232,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     private Section findLastSectionByNovelCode(String code) {
         Example example = new Example(Section.class);
         example.createCriteria().andEqualTo("novelCode", code);
-        example.setOrderByClause("code desc");
+        example.setOrderByClause("id desc");
 
         example.selectProperties("id", "code", "title", "novelCode");
 
