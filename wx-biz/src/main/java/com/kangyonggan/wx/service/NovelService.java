@@ -15,7 +15,7 @@ public interface NovelService {
     /**
      * 笔趣阁地址
      */
-    String BI_QU_GE_URL = "http://www.800txt.net/";
+    String BI_QU_GE_URL = "https://www.qu.la/";
 
     /**
      * 搜索小说
