@@ -191,12 +191,19 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
                 url =  "http://www.800txt.net/book_" + novelCode;
             } else if ("2722".equals(novelCode)) {
                 url =  "http://www.biquge.cn/book/" + novelCode;
+            } else if ("37_37457".equals(novelCode)) {
+                url =  "https://www.biquga.com/" + novelCode;
             }
 
             Document bookDoc = HtmlUtil.parseUrl(url);
             Elements elements = bookDoc.select("#list dl dd a");
 
             int startNum = 0;
+
+            if ("37_37457".equals(novelCode)) {
+                startNum = 9;
+            }
+
             if (lastSection != null) {
                 for (int i = 0; i < elements.size(); i++) {
                     Element element = elements.get(i);
@@ -256,6 +263,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
             url =  "http://www.800txt.net/book_" + novelCode + "/" + sectionCode + ".html";
         } else if ("2722".equals(novelCode)) {
             url =  "http://www.biquge.cn/book/" + novelCode + "/" + sectionCode + ".html";
+        } else if ("37_37457".equals(novelCode)) {
+            url =  "https://www.biquga.com/37_37457/" + sectionCode + ".html";
         }
         Document doc = HtmlUtil.parseUrl(url);
 

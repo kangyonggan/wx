@@ -118,8 +118,14 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
                 return;
             }
 
-            Document document = HtmlUtil.parseUrl(BI_QU_GE_URL + "book/" + novelCode);
-            parseNovel(document, novelCode, categoryCodes);
+            if (novelCode.equals("37_37457")) {
+                // 许你浮生若梦 - https://www.biquga.com/37_37457/
+                Document document = HtmlUtil.parseUrl("https://www.biquga.com/37_37457/");
+                parseNovel(document, novelCode, categoryCodes);
+            } else {
+                Document document = HtmlUtil.parseUrl(BI_QU_GE_URL + "book/" + novelCode);
+                parseNovel(document, novelCode, categoryCodes);
+            }
         } catch (Exception e) {
             log.error("抓取小说{}异常", novelCode, e);
         }
@@ -181,5 +187,4 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
         log.info("抓取小说{}", novel);
         myMapper.insertSelective(novel);
     }
-
 }
