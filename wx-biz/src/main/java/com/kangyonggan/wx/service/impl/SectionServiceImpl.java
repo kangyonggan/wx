@@ -58,8 +58,9 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
     @Override
     @Log
-    public Section findSectionByCode(Integer sectionCode) {
+    public Section findSectionByCode(int novelCode, Integer sectionCode) {
         Section section = new Section();
+        section.setNovelCode(novelCode);
         section.setCode(sectionCode);
         return myMapper.selectOne(section);
     }
@@ -67,8 +68,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
     @Override
     @Log
-    public Section findPrevSectionByCode(Integer code) {
-        Section section = findSectionByCode(code);
+    public Section findPrevSectionByCode(int novelCode, Integer code) {
+        Section section = findSectionByCode(novelCode, code);
         if (section == null) {
             return null;
         }
@@ -91,8 +92,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
     @Override
     @Log
-    public Section findNextSectionByCode(Integer code) {
-        Section section = findSectionByCode(code);
+    public Section findNextSectionByCode(int novelCode, Integer code) {
+        Section section = findSectionByCode(novelCode, code);
         if (section == null) {
             return null;
         }
@@ -137,8 +138,9 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     }
 
     @Override
-    public Section findSection(int sectionCode) {
+    public Section findSection(int novelCode, int sectionCode) {
         Section section = new Section();
+        section.setNovelCode(novelCode);
         section.setCode(sectionCode);
         return myMapper.selectOne(section);
     }

@@ -61,15 +61,16 @@ public class ApiBookController extends BaseController {
     /**
      * 章节详情
      *
+     * @param novelCode
      * @param sectionCode
      * @return
      */
-    @GetMapping("section/{sectionCode:[\\d]+}")
-    public Response section(@PathVariable("sectionCode") int sectionCode) {
+    @GetMapping("{novelCode:[\\d]+}/section/{sectionCode:[\\d]+}")
+    public Response section(@PathVariable("novelCode") int novelCode, @PathVariable("sectionCode") int sectionCode) {
         Response response = Response.getSuccessResponse();
-        Section section = sectionService.findSection(sectionCode);
-        Section nextSection = sectionService.findNextSectionByCode(sectionCode);
-        Section prevSection = sectionService.findPrevSectionByCode(sectionCode);
+        Section section = sectionService.findSection(novelCode, sectionCode);
+        Section nextSection = sectionService.findNextSectionByCode(novelCode, sectionCode);
+        Section prevSection = sectionService.findPrevSectionByCode(novelCode, sectionCode);
 
         response.put("section", section);
         response.put("nextSection", nextSection);
@@ -80,12 +81,13 @@ public class ApiBookController extends BaseController {
     /**
      * 拉取最新章节
      *
+     * @param novelCode
      * @param sectionCode
      * @return
      */
-    @GetMapping("refresh/{sectionCode:[\\d]+}")
-    public Response refresh(@PathVariable("sectionCode") int sectionCode) {
-        Section section = sectionService.findSectionByCode(sectionCode);
+    @GetMapping("{novelCode:[\\d]+}refresh/{sectionCode:[\\d]+}")
+    public Response refresh(@PathVariable("novelCode") int novelCode, @PathVariable("sectionCode") int sectionCode) {
+        Section section = sectionService.findSectionByCode(novelCode, sectionCode);
         sectionService.updateSections(section.getNovelCode());
         return Response.getSuccessResponse();
     }
