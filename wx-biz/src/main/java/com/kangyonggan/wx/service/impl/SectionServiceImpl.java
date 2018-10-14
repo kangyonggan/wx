@@ -202,6 +202,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
 
             if ("37_37457".equals(novelCode)) {
                 startNum = 9;
+            } else if ("66788".equals(novelCode)) {
+                startNum = 12;
             }
 
             if (lastSection != null) {
