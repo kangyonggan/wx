@@ -26,14 +26,16 @@ public class NovelServiceTest extends AbstractTest {
 
     @Test
     public void testPullNovel() {
-        // 逆天邪神
+        // 逆天邪神2722
 //        novelService.pullNovel(2722);
-        // 圣墟
+        // 圣墟12564
 //        novelService.pullNovel(12564);
-        // 充个会员当武神
+        // 充个会员当武神37_37457
 //        novelService.pullNovel("37_37457");
-        // 灵剑尊
-        novelService.pullNovel("66788");
+        // 灵剑尊66788
+//        novelService.pullNovel("66788");
+        // 灵魂客栈774
+        novelService.pullNovel("774");
     }
 
     @Test
@@ -42,7 +44,8 @@ public class NovelServiceTest extends AbstractTest {
 //        sectionService.updateSections(12564);
 //        sectionService.updateSections(81968);
 //        sectionService.updateSections("37_37457");
-        sectionService.updateSections("66788");
+//        sectionService.updateSections("66788");
+        sectionService.updateSections("774");
         System.in.read();
     }
 

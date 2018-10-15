@@ -122,6 +122,9 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
                 // 许你浮生若梦 - https://www.biquga.com/37_37457/
                 Document document = HtmlUtil.parseUrl("https://www.biquga.com/37_37457/");
                 parseNovel(document, novelCode, categoryCodes);
+            } else if ("774".equals(novelCode)) {
+                Document document = HtmlUtil.parseUrl("http://www.xianqihaotianmi.com/book/774.html");
+                parseXiaoqiNovel(document, novelCode, categoryCodes);
             } else {
                 Document document = HtmlUtil.parseUrl(BI_QU_GE_URL + "book/" + novelCode);
                 parseNovel(document, novelCode, categoryCodes);
@@ -130,6 +133,40 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
             log.error("抓取小说{}异常", novelCode, e);
         }
         isPull = false;
+    }
+
+    /**
+     *
+     * @param document
+     * @param novelCode
+     * @param categoryCodes
+     */
+    private void parseXiaoqiNovel(Document document, String novelCode, List<String> categoryCodes) {
+        String name = document.select(".info2 h1").html().trim();
+        String author = document.select(".info2 h3").html().trim();
+        String categoryCode = "qita";
+        String picUrl = document.select(".info1 img").attr("src");
+        author = author.substring(author.indexOf(":") + 1);
+        String descp = document.select(".info2 div p").html().trim();
+
+        Novel novel = new Novel();
+        novel.setCode(novelCode);
+        novel.setName(name);
+        novel.setAuthor(author);
+        novel.setDescp(descp);
+        novel.setCategoryCode(categoryCode);
+
+        String filePath = "cover/" + novelCode + picUrl.substring(picUrl.lastIndexOf("."));
+        try {
+            FileUtil.downloadFromUrl(picUrl, fileUploadPath + filePath);
+            filePath = "upload/" + filePath;
+        } catch (Exception e) {
+            filePath = "app/images/nocover.jpg";
+        }
+        novel.setPicUrl(filePath);
+
+        log.info("抓取小说{}", novel);
+        myMapper.insertSelective(novel);
     }
 
     @Override

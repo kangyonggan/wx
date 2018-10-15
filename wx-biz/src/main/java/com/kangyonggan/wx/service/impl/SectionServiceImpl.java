@@ -188,15 +188,17 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
             Section lastSection = findLastSectionByNovelCode(novelCode);
             String url = NovelService.BI_QU_GE_URL + "book/" + novelCode;
             if ("106513".equals(novelCode)) {
-                url =  "http://www.800txt.net/book_" + novelCode;
+                url = "http://www.800txt.net/book_" + novelCode;
             } else if ("2722".equals(novelCode)) {
-                url =  "http://www.biquge.cn/book/" + novelCode;
+                url = "http://www.biquge.cn/book/" + novelCode;
             } else if ("37_37457".equals(novelCode)) {
-                url =  "https://www.biquga.com/" + novelCode;
+                url = "https://www.biquga.com/" + novelCode;
+            } else if ("774".equals(novelCode)) {
+                url = "http://www.xianqihaotianmi.com/book/774.html";
             }
 
             Document bookDoc = HtmlUtil.parseUrl(url);
-            Elements elements = bookDoc.select("#list dl dd a");
+            Elements elements = bookDoc.select(".list-charts li a");
 
             int startNum = 0;
 
@@ -262,11 +264,14 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
     private void parseSection(String novelCode, String sectionCode) {
         String url = NovelService.BI_QU_GE_URL + "/book/" + novelCode + "/" + sectionCode + ".html";
         if ("106513".endsWith(novelCode)) {
-            url =  "http://www.800txt.net/book_" + novelCode + "/" + sectionCode + ".html";
+            url = "http://www.800txt.net/book_" + novelCode + "/" + sectionCode + ".html";
         } else if ("2722".equals(novelCode)) {
-            url =  "http://www.biquge.cn/book/" + novelCode + "/" + sectionCode + ".html";
+            url = "http://www.biquge.cn/book/" + novelCode + "/" + sectionCode + ".html";
         } else if ("37_37457".equals(novelCode)) {
-            url =  "https://www.biquga.com/37_37457/" + sectionCode + ".html";
+            url = "https://www.biquga.com/37_37457/" + sectionCode + ".html";
+        } else if ("774".equals(novelCode)) {
+            parseXiaoQi(novelCode, sectionCode);
+            return;
         }
         Document doc = HtmlUtil.parseUrl(url);
 
@@ -274,6 +279,23 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         String content = doc.select("#content").html();
         content = content.replaceAll("……", "...");
         content = content.replaceAll("———", "");
+
+        Section section = new Section();
+        section.setNovelCode(novelCode);
+        section.setCode(sectionCode);
+        section.setTitle(title);
+        section.setContent(content);
+
+        log.info("章节【{}】保存成功", section.getTitle());
+        myMapper.insertSelective(section);
+    }
+
+    private void parseXiaoQi(String novelCode, String sectionCode) {
+        String url = "http://www.xianqihaotianmi.com/read/" + sectionCode + ".html";
+        Document doc = HtmlUtil.parseUrl(url);
+
+        String title = doc.select(".panel-heading").html().trim();
+        String content = doc.select(".content-body").html();
 
         Section section = new Section();
         section.setNovelCode(novelCode);
