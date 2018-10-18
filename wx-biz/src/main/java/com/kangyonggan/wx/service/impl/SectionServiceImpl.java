@@ -188,6 +188,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
             Section lastSection = findLastSectionByNovelCode(novelCode);
             // 灵剑尊
             String url = NovelService.BI_QU_GE_URL + "book/" + novelCode;
+            String listSelector = "#list dd a";
             if ("106513".equals(novelCode)) {
                 // 充个会员当武神
                 url = "http://www.800txt.net/book_" + novelCode;
@@ -200,10 +201,11 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
             } else if ("774".equals(novelCode)) {
                 // 灵魂客栈
                 url = "http://www.xianqihaotianmi.com/book/774.html";
+                listSelector = ".list-charts li a";
             }
 
             Document bookDoc = HtmlUtil.parseUrl(url);
-            Elements elements = bookDoc.select(".list-charts li a");
+            Elements elements = bookDoc.select(listSelector);
 
             int startNum = 0;
 
