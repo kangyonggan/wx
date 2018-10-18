@@ -123,9 +123,19 @@ public class NovelServiceImpl extends BaseService<Novel> implements NovelService
                 Document document = HtmlUtil.parseUrl("https://www.biquga.com/37_37457/");
                 parseNovel(document, novelCode, categoryCodes);
             } else if ("774".equals(novelCode)) {
+                // 灵魂客栈 - http://www.xianqihaotianmi.com/book/774.html
                 Document document = HtmlUtil.parseUrl("http://www.xianqihaotianmi.com/book/774.html");
                 parseXiaoqiNovel(document, novelCode, categoryCodes);
+            } else if ("2722".equals(novelCode)) {
+                // 逆天邪神 - https://www.biqubao.com/book/2722/
+                Document document = HtmlUtil.parseUrl("https://www.biqubao.com/book/2722/");
+                parseNovel(document, novelCode, categoryCodes);
+            } else if ("106513".equals(novelCode)) {
+                // 充个会员当武神 - http://www.800txt.net/book_106513/
+                Document document = HtmlUtil.parseUrl("http://www.800txt.net/book_106513/");
+                parseNovel(document, novelCode, categoryCodes);
             } else {
+                // 灵剑尊 - https://www.qu.la/book/66788/
                 Document document = HtmlUtil.parseUrl(BI_QU_GE_URL + "book/" + novelCode);
                 parseNovel(document, novelCode, categoryCodes);
             }

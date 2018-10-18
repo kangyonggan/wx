@@ -186,14 +186,19 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         try {
             // 最新章节
             Section lastSection = findLastSectionByNovelCode(novelCode);
+            // 灵剑尊
             String url = NovelService.BI_QU_GE_URL + "book/" + novelCode;
             if ("106513".equals(novelCode)) {
+                // 充个会员当武神
                 url = "http://www.800txt.net/book_" + novelCode;
             } else if ("2722".equals(novelCode)) {
-                url = "http://www.biquge.cn/book/" + novelCode;
+                // 逆天邪神
+                url = "https://www.biqubao.com/book/" + novelCode;
             } else if ("37_37457".equals(novelCode)) {
+                // 许你浮生如梦
                 url = "https://www.biquga.com/" + novelCode;
             } else if ("774".equals(novelCode)) {
+                // 灵魂客栈
                 url = "http://www.xianqihaotianmi.com/book/774.html";
             }
 
@@ -262,14 +267,19 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
      * @param sectionCode
      */
     private void parseSection(String novelCode, String sectionCode) {
+        // 灵剑尊
         String url = NovelService.BI_QU_GE_URL + "/book/" + novelCode + "/" + sectionCode + ".html";
         if ("106513".endsWith(novelCode)) {
+            // 充个会员当武神
             url = "http://www.800txt.net/book_" + novelCode + "/" + sectionCode + ".html";
         } else if ("2722".equals(novelCode)) {
-            url = "http://www.biquge.cn/book/" + novelCode + "/" + sectionCode + ".html";
+            // 逆天邪神
+            url = "https://www.biqubao.com/book/" + novelCode + "/" + sectionCode + ".html";
         } else if ("37_37457".equals(novelCode)) {
+            // 许你浮生如梦
             url = "https://www.biquga.com/37_37457/" + sectionCode + ".html";
         } else if ("774".equals(novelCode)) {
+            // 灵魂客栈
             parseXiaoQi(novelCode, sectionCode);
             return;
         }

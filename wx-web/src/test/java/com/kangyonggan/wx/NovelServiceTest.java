@@ -28,14 +28,14 @@ public class NovelServiceTest extends AbstractTest {
     public void testPullNovel() {
         // 逆天邪神2722
 //        novelService.pullNovel(2722);
-        // 圣墟12564
-//        novelService.pullNovel(12564);
-        // 充个会员当武神37_37457
-//        novelService.pullNovel("37_37457");
+        // 充个会员当武神106513
+//        novelService.pullNovel("106513");
         // 灵剑尊66788
 //        novelService.pullNovel("66788");
         // 灵魂客栈774
         novelService.pullNovel("774");
+        // 许你浮生如梦37_37457
+        novelService.pullNovel("37_37457");
     }
 
     @Test
