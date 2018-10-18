@@ -139,6 +139,6 @@ CREATE TABLE tb_record
   updated_time TIMESTAMP                             NOT NULL                    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   COMMENT '更新时间'
 )
-  COMMENT '书籍表';
+  COMMENT '记录表';
 CREATE INDEX ix_openid
   ON tb_record (openid);
