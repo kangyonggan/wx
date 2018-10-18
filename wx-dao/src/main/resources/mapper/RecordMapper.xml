@@ -7,6 +7,7 @@
         -->
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="file_names" property="fileNames" jdbcType="VARCHAR"/>
+        <result column="video_names" property="videoNames" jdbcType="VARCHAR"/>
         <result column="openid" property="openid" jdbcType="VARCHAR"/>
         <result column="status" property="status" jdbcType="TINYINT"/>
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>

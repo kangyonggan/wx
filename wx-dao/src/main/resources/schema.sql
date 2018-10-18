@@ -127,7 +127,9 @@ CREATE TABLE tb_record
   content      LONGTEXT                              NOT NULL
   COMMENT '内容',
   file_names   VARCHAR(2048)                         NOT NULL                    DEFAULT ''
-  COMMENT '作者',
+  COMMENT '图片',
+  video_names  VARCHAR(2048)                         NOT NULL                    DEFAULT ''
+  COMMENT '视频',
   openid       VARCHAR(128)                          NOT NULL
   COMMENT 'openid',
   status       TINYINT                               NOT NULL                    DEFAULT 0

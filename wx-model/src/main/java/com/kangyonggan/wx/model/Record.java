@@ -27,10 +27,16 @@ public class Record {
     private String content;
 
     /**
-     * 作者
+     * 图片
      */
     @Column(name = "file_names")
     private String fileNames;
+
+    /**
+     * 视频
+     */
+    @Column(name = "video_names")
+    private String videoNames;
 
     /**
      * openid
