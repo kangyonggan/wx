@@ -1,5 +1,8 @@
-<div id="footer" style="background: #eee; text-align: right;line-height: 90px;">
-    <a href="http://www.miitbeian.gov.cn" target="_blank" style="color: #000;margin-right: 30px;">皖ICP备18009089号</a>
+<div id="footer">
+    <div class="content">
+    ${appName} 由 康永敢 制作 &copy; ${.now?string('yyyy')}
+        <a href="http://www.miitbeian.gov.cn" target="_blank">皖ICP备18009089号</a>
+    </div>
 </div>
 
 <div id="back-top" class="back-top">
