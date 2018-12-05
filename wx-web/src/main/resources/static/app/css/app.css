@@ -10,6 +10,15 @@ body {
     font-size: 16px;
 }
 
+.container {
+    min-height: 100%;
+    margin-bottom: -260px;
+}
+
+.empty, .footer {
+    height: 260px;
+}
+
 .inner {
     width: 1024px;
     margin: 0 auto;

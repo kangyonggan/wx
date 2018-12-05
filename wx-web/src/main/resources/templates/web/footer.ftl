@@ -6,20 +6,20 @@
                 康永敢一直努力的向全栈看齐，多年的实战经验可轻松的为中小企业提供系统级解决方案，比如：后管系统、充值系统、门户网站、公共号、小程序等，并长期提供有保障的维护及售后。
             </div>
             <div class="space-10"></div>
-            <div>
+            <div class="contacts">
                 <a href="#" title="微信">
                     <i class="fa fa-weixin"></i>
                 </a>
-                <a href="#" title="QQ" style="margin-left: 20px;">
+                <a href="#" title="QQ">
                     <i class="fa fa-qq"></i>
                 </a>
-                <a href="#" title="手机" style="margin-left: 20px;">
+                <a href="#" title="手机">
                     <i class="fa fa-phone"></i>
                 </a>
-                <a href="#" title="邮箱" style="margin-left: 20px;">
+                <a href="#" title="邮箱">
                     <i class="fa fa-envelope-o"></i>
                 </a>
-                <a href="#" title="项目" style="margin-left: 20px;">
+                <a href="#" title="项目">
                     <i class="fa fa-github"></i>
                 </a>
             </div>
@@ -78,7 +78,6 @@
         background: #000;
         color: #d4d4d4;
         font-size: 14px;
-        height: 260px;
     }
 
     .footer a {
@@ -126,6 +125,10 @@
         border-top: 1px solid #444;
         padding-top: 20px;
         color: #d4d4d4;
+    }
+
+    .footer .contacts a {
+        margin-right: 20px;
     }
 
     .footer .links {
