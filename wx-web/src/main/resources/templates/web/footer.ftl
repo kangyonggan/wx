@@ -68,7 +68,7 @@
         <div class="space-10"></div>
 
         <div class="bottom">
-            Copyright &copy; 2015-${.now?string('yyyy')} . <a href="http://www.miitbeian.gov.cn" target="_blank">皖ICP备18009089号</a>.
+            Copyright &copy; 2015-${.now?string('yyyy')} . <a href="http://www.miitbeian.gov.cn" target="_blank" style="color: #ddd">皖ICP备18009089号</a>.
         </div>
     </div>
 </div>
@@ -141,5 +141,6 @@
         display: inline-block;
         width: 70px;
         line-height: 35px;
+        color: #ddd;
     }
 </style>
