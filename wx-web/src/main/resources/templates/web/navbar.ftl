@@ -76,6 +76,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#">身份证校验</a>
+                    </li>
+                    <li>
+                        <a href="#">生成身份证</a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -168,7 +174,7 @@
         text-align: left;
         padding: 2px 15px;
         font-size: 13px;
-        letter-spacing: 3px;
+        letter-spacing: 2px;
     }
 
     .navbar .sub-menus {
@@ -180,6 +186,7 @@
         margin-top: 0;
         padding-left: 0;
         background: rgba(0, 0, 0, 0.88);
+        border-left: 1px solid #777;
     }
 
     .navbar .sub-menus > li {
@@ -194,7 +201,7 @@
         text-align: left;
         padding: 2px 15px;
         font-size: 13px;
-        letter-spacing: 3px;
+        letter-spacing: 2px;
     }
 
     .navbar .inner {
