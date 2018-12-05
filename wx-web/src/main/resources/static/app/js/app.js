@@ -1,17 +1,5 @@
 $(function () {
-    // 显示/隐藏回调顶部按钮
-    window.onscroll = function () {
-        if (document.documentElement.scrollTop + document.body.scrollTop > 600) {
-            document.getElementById("back-top").style.display = "block";
-        } else {
-            document.getElementById("back-top").style.display = "none";
-        }
-    };
 
-    // 回到顶部
-    $(".back-top").click(function () {
-        scrollTo(0, 0)
-    })
 });
 
 /**

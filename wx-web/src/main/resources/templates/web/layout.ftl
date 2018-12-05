@@ -24,13 +24,10 @@
 </head>
 
 <body>
-<div class="container">
 <#include "navbar.ftl"/>
 
-    <div id="main">
-    <@block name="main"/>
-    </div>
-    <div class="empty"></div>
+<div class="main">
+<@block name="main"/>
 </div>
 
 <#include "footer.ftl"/>
