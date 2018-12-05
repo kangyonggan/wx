@@ -49,6 +49,12 @@
                 <a href="${ctx}/works">作品</a>
             </li>
             <li>
+                <a href="${ctx}/order">下单</a>
+            </li>
+            <li>
+                <a href="${ctx}/ck">代练</a>
+            </li>
+            <li>
                 <a href="javascript:">
                     工具<i class="fa fa-small fa-chevron-down"></i>
                 </a>
@@ -202,11 +208,6 @@
         padding: 2px 15px;
         font-size: 13px;
         letter-spacing: 2px;
-    }
-
-    .navbar .inner {
-        max-width: 1024px;
-        margin: 0 auto;
     }
 
     .fa-small {

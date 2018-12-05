@@ -26,7 +26,7 @@
 <body>
 <#include "navbar.ftl"/>
 
-<div class="main">
+<div class="inner">
 <@block name="main"/>
 </div>
 
