@@ -15,10 +15,7 @@
                 <a href="${ctx}/works">作品案例</a>
             </li>
             <li>
-                <a href="${ctx}/order">立即下单</a>
-            </li>
-            <li>
-                <a href="${ctx}/ck">游戏代练</a>
+                <a href="${ctx}/order">找我合作</a>
             </li>
             <li>
                 <a href="javascript:">
@@ -193,14 +190,21 @@
      * @param type
      */
     function navbar(type) {
+        var $navbar = $(".navbar");
+        $navbar.stop();
         if (type === 'show') {
-            $(".navbar").fadeIn(800);
+            $navbar.find(".inner").show();
+            $navbar.animate({height: 70});
         } else if (type === 'hide') {
-            $(".navbar").fadeOut(800);
+            $navbar.find(".inner").hide();
+            $navbar.animate({height: 0});
         }
     }
 
     $(function () {
+        // 滚动方向，0：下，1：上
+        var scrollDirection = 1;
+
         // 上下滚动事件
         var scrollFunc = function (e) {
             e = e || window.event;
@@ -208,23 +212,35 @@
                 //第一步：先判断浏览器IE，谷歌滑轮事件
                 if (e.wheelDelta > 5) {
                     //当滑轮向上滚动时
-                    navbar('show')
+                    if (scrollDirection === 0) {
+                        navbar('show');
+                        scrollDirection = 1;
+                    }
                 }
                 if (e.wheelDelta < 0) {
                     //当滑轮向下滚动时
                     if (document.documentElement.scrollTop + document.body.scrollTop > 70) {
-                        navbar('hide')
+                        if (scrollDirection === 1) {
+                            navbar('hide');
+                            scrollDirection = 0;
+                        }
                     }
                 }
             } else if (e.detail) {
                 //Firefox滑轮事件
                 if (e.detail > 5) {
                     //当滑轮向上滚动时
-                    navbar('show')
+                    if (scrollDirection === 0) {
+                        navbar('show');
+                        scrollDirection = 1;
+                    }
                 }
                 if (e.detail < 0) {
                     //当滑轮向下滚动时
-                    navbar('hide')
+                    if (scrollDirection === 1) {
+                        navbar('hide');
+                        scrollDirection = 0;
+                    }
                 }
             }
         };
