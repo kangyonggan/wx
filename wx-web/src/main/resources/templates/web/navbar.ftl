@@ -187,6 +187,19 @@
 </style>
 
 <script>
+    /**
+     * 显示/隐藏 导航条
+     *
+     * @param type
+     */
+    function navbar(type) {
+        if (type === 'show') {
+            $(".navbar").fadeIn(800);
+        } else if (type === 'hide') {
+            $(".navbar").fadeOut(800);
+        }
+    }
+
     $(function () {
         // 上下滚动事件
         var scrollFunc = function (e) {
@@ -195,21 +208,23 @@
                 //第一步：先判断浏览器IE，谷歌滑轮事件
                 if (e.wheelDelta > 5) {
                     //当滑轮向上滚动时
-                    $(".navbar").fadeIn(800);
+                    navbar('show')
                 }
                 if (e.wheelDelta < 0) {
                     //当滑轮向下滚动时
                     if (document.documentElement.scrollTop + document.body.scrollTop > 70) {
-                        $(".navbar").fadeOut(800);
+                        navbar('hide')
                     }
                 }
             } else if (e.detail) {
                 //Firefox滑轮事件
                 if (e.detail > 5) {
                     //当滑轮向上滚动时
+                    navbar('show')
                 }
                 if (e.detail < 0) {
                     //当滑轮向下滚动时
+                    navbar('hide')
                 }
             }
         };

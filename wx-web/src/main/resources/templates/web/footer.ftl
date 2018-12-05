@@ -73,6 +73,10 @@
     </div>
 </div>
 
+<a href="#" class="toTop hidden" id="back-top">
+    <i class="fa fa-angle-up"></i>
+</a>
+
 <style>
     .footer {
         background: #000;
@@ -146,4 +150,40 @@
         line-height: 35px;
         color: #ddd;
     }
+
+    .toTop {
+        position: fixed;
+        width: 35px;
+        height: 35px;
+        bottom: 25px;
+        right: 35px;
+        line-height: 35px;
+        border-radius: 35px;
+        text-align: center;
+        background: #FFF;
+    }
+
+    .toTop:hover {
+        background: #000;
+        color: #fff;
+    }
 </style>
+
+<script>
+    $(function () {
+        // 显示/隐藏回调顶部按钮
+        window.onscroll = function () {
+            if (document.documentElement.scrollTop + document.body.scrollTop > 600) {
+                document.getElementById("back-top").style.display = "block";
+            } else {
+                document.getElementById("back-top").style.display = "none";
+            }
+        };
+
+        // 回到顶部
+        $("#back-top").click(function () {
+            scrollTo(0, 0);
+            navbar('show');
+        })
+    })
+</script>
