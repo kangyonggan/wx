@@ -15,7 +15,7 @@
                 <a href="${ctx}/novel">
                     小说<i class="fa fa-small fa-chevron-down"></i>
                 </a>
-                <ul class="sub-menus hidden">
+                <ul class="sec-menus hidden">
                     <li>
                         <a href="#">玄幻</a>
                     </li>
@@ -52,7 +52,7 @@
                 <a href="javascript:">
                     工具<i class="fa fa-small fa-chevron-down"></i>
                 </a>
-                <ul class="sub-menus hidden">
+                <ul class="sec-menus hidden">
                     <li>
                         <a href="#">XML格式化</a>
                     </li>
@@ -60,7 +60,21 @@
                         <a href="#">JSON格式化</a>
                     </li>
                     <li>
-                        <a href="#">SQL格式化</a>
+                        <a href="#">
+                            SQL格式化
+                            <i class="fa fa-small fa-right fa-caret-right"></i>
+                        </a>
+                        <ul class="sub-menus hidden">
+                            <li>
+                                <a href="#">MySQL</a>
+                            </li>
+                            <li>
+                                <a href="#">SQLServer</a>
+                            </li>
+                            <li>
+                                <a href="#">Oracle</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
@@ -130,7 +144,7 @@
         background: #fff;
     }
 
-    .navbar .sub-menus {
+    .navbar .sec-menus {
         position: absolute;
         left: 0;
         top: 70px;
@@ -141,11 +155,38 @@
         background: rgba(0, 0, 0, 0.88);
     }
 
-    .navbar .sub-menus li {
+    .navbar .sec-menus li {
+        border-bottom: 1px solid #777;
+        position: relative;
+    }
+
+    .navbar .sec-menus li a {
+        display: inline-block;
+        height: 36px;
+        line-height: 36px;
+        width: 120px;
+        text-align: left;
+        padding: 2px 15px;
+        font-size: 13px;
+        letter-spacing: 3px;
+    }
+
+    .navbar .sub-menus {
+        position: absolute;
+        left: 150px;
+        top: 0;
+        width: 150px;
+        list-style: none;
+        margin-top: 0;
+        padding-left: 0;
+        background: rgba(0, 0, 0, 0.88);
+    }
+
+    .navbar .sub-menus > li {
         border-bottom: 1px solid #777;
     }
 
-    .navbar .sub-menus li a {
+    .navbar .sub-menus > li a {
         display: inline-block;
         height: 36px;
         line-height: 36px;
@@ -163,6 +204,11 @@
 
     .fa-small {
         font-size: 10px;
+    }
+
+    .fa-right {
+        float: right;
+        margin-top: 15px;
     }
 </style>
 
@@ -203,15 +249,24 @@
         //滚动滑轮触发scrollFunc方法  //ie 谷歌
         window.onmousewheel = document.onmousewheel = scrollFunc;
 
+        // 显示二级菜单
+        $(".sec-menus").parent("li").hover(function () {
+            $(this).find(".sec-menus").show();
+            var $fa = $(this).find("i.fa-chevron-down");
+            $fa.removeClass("fa-chevron-down");
+            $fa.addClass("fa-chevron-up");
+        }, function () {
+            $(this).find(".sec-menus").hide();
+            var $fa = $(this).find("i.fa-chevron-up");
+            $fa.removeClass("fa-chevron-up");
+            $fa.addClass("fa-chevron-down");
+        });
+
         // 显示子菜单
-        $(".sub-menus").parents("li").hover(function () {
+        $(".sub-menus").parent("li").hover(function () {
             $(this).find(".sub-menus").show();
-            $(this).find("i.fa").removeClass("fa-chevron-down");
-            $(this).find("i.fa").addClass("fa-chevron-up");
         }, function () {
             $(this).find(".sub-menus").hide();
-            $(this).find("i.fa").removeClass("fa-chevron-up");
-            $(this).find("i.fa").addClass("fa-chevron-down");
         })
     })
 </script>
