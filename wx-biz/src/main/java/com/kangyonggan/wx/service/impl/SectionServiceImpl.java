@@ -192,8 +192,8 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
             if ("106513".equals(novelCode)) {
                 // 充个会员当武神
                 url = "http://www.800txt.net/book_" + novelCode;
-            } else if ("2722".equals(novelCode)) {
-                // 逆天邪神
+            } else if ("2722".equals(novelCode) || "380".equals(novelCode)) {
+                // 逆天邪神 || 九星霸体诀
                 url = "https://www.biqubao.com/book/" + novelCode;
             } else if ("37_37457".equals(novelCode)) {
                 // 许你浮生如梦
@@ -274,7 +274,7 @@ public class SectionServiceImpl extends BaseService<Section> implements SectionS
         if ("106513".endsWith(novelCode)) {
             // 充个会员当武神
             url = "http://www.800txt.net/book_" + novelCode + "/" + sectionCode + ".html";
-        } else if ("2722".equals(novelCode)) {
+        } else if ("2722".equals(novelCode) || "380".equals(novelCode)) {
             // 逆天邪神
             url = "https://www.biqubao.com/book/" + novelCode + "/" + sectionCode + ".html";
         } else if ("37_37457".equals(novelCode)) {

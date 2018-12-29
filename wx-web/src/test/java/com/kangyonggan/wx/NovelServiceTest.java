@@ -33,9 +33,11 @@ public class NovelServiceTest extends AbstractTest {
         // 灵剑尊66788
 //        novelService.pullNovel("66788");
         // 灵魂客栈774
-        novelService.pullNovel("774");
+//        novelService.pullNovel("774");
         // 许你浮生如梦37_37457
-        novelService.pullNovel("37_37457");
+//        novelService.pullNovel("37_37457");
+        // 九星霸体决380
+        novelService.pullNovel("380");
     }
 
     @Test
@@ -45,7 +47,8 @@ public class NovelServiceTest extends AbstractTest {
 //        sectionService.updateSections(81968);
 //        sectionService.updateSections("37_37457");
 //        sectionService.updateSections("66788");
-        sectionService.updateSections("774");
+//        sectionService.updateSections("774");
+        sectionService.updateSections("380");
         System.in.read();
     }
 
